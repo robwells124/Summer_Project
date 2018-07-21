@@ -1,8 +1,4 @@
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Image;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.ImageIcon;
@@ -14,7 +10,7 @@ public class Board extends JPanel {
     private final int PERIOD_INTERVAL = 25;
 
     private Timer timer;
-
+    public Sprites.Mario mario;
     private Image levelBackground;
 
 
@@ -30,7 +26,7 @@ public class Board extends JPanel {
         int w = levelBackground.getWidth(this);
         int h =  levelBackground.getHeight(this);
         setPreferredSize(new Dimension(w, h));
-
+        mario = new Sprites.Mario("res\\MarioStanding.png",12,16);
         setDoubleBuffered(true);
 
         timer = new Timer();
@@ -47,6 +43,16 @@ public class Board extends JPanel {
     public void paintComponent(Graphics g) {
 
         g.drawImage(levelBackground, 0, 0, null);
+        doDrawing(g);
+
+    }
+    private void doDrawing(Graphics g) {
+
+        Graphics2D g2d = (Graphics2D) g;
+
+
+        g2d.drawImage(mario.getImage(), mario.getX(),
+                mario.getY(), this);
     }
 
     private class ScheduleTask extends TimerTask {
