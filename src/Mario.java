@@ -3,7 +3,7 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 
-public class Mario {
+public class Mario extends Sprite {
 
     private int dx;
     private int dy;
@@ -13,7 +13,9 @@ public class Mario {
     private int h;
     private Image image;
 
-    public Mario(){
+
+    public Mario(String img,int x, int y){
+        super( img,x, y);
         loadImage();
     }
     private void loadImage() {
@@ -24,27 +26,7 @@ public class Mario {
         w = image.getWidth(null);
         h = image.getHeight(null);
     }
-    public void move(){
-        x += dx;
-        y += dy;
-    }
-    public int getX(){
-        return x;
-    }
-    public int getY(){
-        return y;
-    }
-    public  int getWidth(){
-        return w;
-    }
-    public int getHeight(){
-        return  h;
-    }
 
-    public Image getImage() {
-
-        return image;
-    }
     public void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
