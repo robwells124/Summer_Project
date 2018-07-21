@@ -18,7 +18,7 @@ public class Mario {
     }
     private void loadImage() {
 
-        ImageIcon ii = new ImageIcon("src/resources/spaceship.png");
+        ImageIcon ii = new ImageIcon("res/MarioStanding.png");
         image = ii.getImage();
 
         w = image.getWidth(null);
