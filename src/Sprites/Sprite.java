@@ -1,5 +1,7 @@
+package Sprites;
+
 import java.awt.Image;
-import java.awt.event.KeyEvent;
+
 import javax.swing.ImageIcon;
 
 
@@ -11,6 +13,10 @@ public class Sprite {
     private int h;
     private Image image;
 
+    public Sprite() {
+        this.x = 0;
+        this.y = 0 ;
+    }
     public Sprite(String img,int x, int y){
         loadImage(img);
         this.x = x;
