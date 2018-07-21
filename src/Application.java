@@ -11,7 +11,7 @@ public class Application extends JFrame {
     private void initUI() {
 
         add(new Board());
-
+        add(new Mario());
         setSize(1191, 670);
 
         setTitle("Mariyo");
