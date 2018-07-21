@@ -14,7 +14,7 @@ public class Application extends JFrame {
 
         setSize(250, 200);
 
-        setTitle("Application");
+        setTitle("Mariyo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
     }
