@@ -1,10 +1,15 @@
-import javax.swing.JPanel;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Image;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.ImageIcon;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
-public class Board extends JPanel {
+public class Board extends JPanel implements ActionListener {
 
     private Image bardejov;
 
@@ -31,5 +36,9 @@ public class Board extends JPanel {
     public void paintComponent(Graphics g) {
 
         g.drawImage(bardejov, 0, 0, null);
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
     }
 }
