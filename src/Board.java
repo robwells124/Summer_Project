@@ -1,16 +1,22 @@
-import Sprites.Mario;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
+import java.util.Timer;
+import java.util.TimerTask;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.Timer;
 
-public class Board extends JPanel implements ActionListener {
+public class Board extends JPanel {
 
-    private Image bardejov;
-    private Mario mario;
+    private final int INITIAL_DELAY = 100;
+    private final int PERIOD_INTERVAL = 25;
+
+    private Timer timer;
+
+    private Image levelBackground;
+
 
     public Board() {
 
@@ -21,32 +27,35 @@ public class Board extends JPanel implements ActionListener {
 
         loadImage();
 
-        int w = bardejov.getWidth(this);
-        int h =  bardejov.getHeight(this);
+        int w = levelBackground.getWidth(this);
+        int h =  levelBackground.getHeight(this);
         setPreferredSize(new Dimension(w, h));
-        mario = new Mario("res\\MarioStanding.png",12,16);
+
+        setDoubleBuffered(true);
+
+        timer = new Timer();
+        timer.scheduleAtFixedRate(new ScheduleTask(),
+                INITIAL_DELAY, PERIOD_INTERVAL);
     }
 
     private void loadImage() {
         ImageIcon ii = new ImageIcon("res/background.png");
-        bardejov = ii.getImage();
+        levelBackground = ii.getImage();
     }
 
     @Override
     public void paintComponent(Graphics g) {
 
-        g.drawImage(bardejov, 0, 0, null);
-        doDrawing(g);
+        g.drawImage(levelBackground, 0, 0, null);
     }
 
-    private void doDrawing(Graphics g) {
+    private class ScheduleTask extends TimerTask {
 
-        Graphics2D g2d = (Graphics2D) g;
+        @Override
+        public void run() {
 
-        g2d.drawImage(mario.getImage(), mario.getX(),
-                mario.getY(), this);
+            repaint();
+        }
     }
-    @Override
-    public void actionPerformed(ActionEvent e) {
-    }
+
 }
