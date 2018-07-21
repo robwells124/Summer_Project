@@ -12,7 +12,7 @@ public class Application extends JFrame {
 
         add(new Board());
 
-        setSize(250, 200);
+        setSize(1191, 670);
 
         setTitle("Mariyo");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
