@@ -32,12 +32,12 @@ public class Mario extends Sprite {
     public void keyPressed(KeyEvent e) {
 
         int key = e.getKeyCode();
-
         if (key == KeyEvent.VK_LEFT) {
             dx = -2;
         }
 
         if (key == KeyEvent.VK_RIGHT) {
+            System.out.println("YES");
             dx = 2;
         }
 
@@ -67,5 +67,11 @@ public class Mario extends Sprite {
         if (key == KeyEvent.VK_DOWN) {
             dy = 0;
         }
+    }
+    public void moving(){
+        x+=dx;
+        y+=dy;
+        System.out.println(x);
+        System.out.println(y );
     }
 }

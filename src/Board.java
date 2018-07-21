@@ -1,4 +1,8 @@
+import Sprites.Sprite;
+
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.ImageIcon;
@@ -22,7 +26,8 @@ public class Board extends JPanel {
     private void initBoard() {
 
         loadImage();
-
+        addKeyListener(new TAdapter());
+        setFocusable(true);
         int w = levelBackground.getWidth(this);
         int h =  levelBackground.getHeight(this);
         setPreferredSize(new Dimension(w, h));
@@ -41,12 +46,12 @@ public class Board extends JPanel {
 
     @Override
     public void paintComponent(Graphics g) {
-
+        super.paintComponent(g);
         g.drawImage(levelBackground, 0, 0, null);
-        doDrawing(g);
+        drawMario(g);
 
     }
-    private void doDrawing(Graphics g) {
+    private void drawMario(Graphics g) {
 
         Graphics2D g2d = (Graphics2D) g;
 
@@ -59,8 +64,22 @@ public class Board extends JPanel {
 
         @Override
         public void run() {
-
+            mario.moving();
+            System.out.println(mario.getX());
             repaint();
+        }
+    }
+    private class TAdapter extends KeyAdapter {
+
+        @Override
+        public void keyReleased(KeyEvent e) {
+            mario.keyReleased(e);
+        }
+
+        @Override
+        public void keyPressed(KeyEvent e) {
+            System.out.println("PRESSED");
+            mario.keyPressed(e);
         }
     }
 
