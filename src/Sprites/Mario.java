@@ -9,8 +9,8 @@ public class Mario extends Sprite {
 
     private int dx;
     private int dy;
-    private int x = 40;
-    private int y = 60;
+    //private int x;
+    //private int y;
     private int w=12;
     private int h=16;
     private Image image;
@@ -37,7 +37,7 @@ public class Mario extends Sprite {
         }
 
         if (key == KeyEvent.VK_RIGHT) {
-            System.out.println("YES");
+            //System.out.println("YES");
             dx = 2;
         }
 
@@ -69,9 +69,9 @@ public class Mario extends Sprite {
         }
     }
     public void moving(){
-        x+=dx;
-        y+=dy;
-        System.out.println(x);
-        System.out.println(y );
+        setX(getX() + dx);
+        setY(getY() + dy);
+        //System.out.println(x);
+        //System.out.println(y );
     }
 }

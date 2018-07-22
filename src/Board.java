@@ -49,7 +49,7 @@ public class Board extends JPanel {
         super.paintComponent(g);
         g.drawImage(levelBackground, 0, 0, null);
         drawMario(g);
-
+        System.out.println(mario.getX());
     }
     private void drawMario(Graphics g) {
 
@@ -58,6 +58,7 @@ public class Board extends JPanel {
 
         g2d.drawImage(mario.getImage(), mario.getX(),
                 mario.getY(), this);
+        System.out.println("drawMario");
     }
 
     private class ScheduleTask extends TimerTask {
@@ -65,7 +66,7 @@ public class Board extends JPanel {
         @Override
         public void run() {
             mario.moving();
-            System.out.println(mario.getX());
+            //System.out.println(mario.getX());
             repaint();
         }
     }
@@ -78,7 +79,7 @@ public class Board extends JPanel {
 
         @Override
         public void keyPressed(KeyEvent e) {
-            System.out.println("PRESSED");
+            //System.out.println("PRESSED");
             mario.keyPressed(e);
         }
     }
