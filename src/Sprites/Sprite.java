@@ -1,7 +1,7 @@
 package Sprites;
 
 import java.awt.Image;
-
+import java.awt.Rectangle;
 import javax.swing.ImageIcon;
 
 
@@ -9,8 +9,8 @@ public class Sprite {
 
     private int x;
     private int y;
-    private int w;
-    private int h;
+    private int width;
+    private int height;
     private Image image;
 
     public Sprite() {
@@ -26,8 +26,8 @@ public class Sprite {
         ImageIcon ii = new ImageIcon(img);
         image = ii.getImage();
 
-        w = image.getWidth(null);
-        h = image.getHeight(null);
+        width = image.getWidth(null);
+        height = image.getHeight(null);
     }
 
     public void setX(int x){
@@ -43,10 +43,15 @@ public class Sprite {
         return y;
     }
     public  int getWidth(){
-        return w;
+        return width;
     }
     public int getHeight(){
-        return  h;
+        return height;
+    }
+
+    //used for collision detection
+    public Rectangle getBounds(){
+        return new Rectangle(x, y, width, height);
     }
 
     public Image getImage() {
