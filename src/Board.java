@@ -3,10 +3,12 @@ import Sprites.Sprite;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import java.util.*;
 
 public class Board extends JPanel {
 
@@ -16,6 +18,10 @@ public class Board extends JPanel {
     private Timer timer;
     public Sprites.Mario mario;
     private Image levelBackground;
+    public Map<Coordinate, Boolean> terrain = new HashMap<>(); //check tiles surrounding mario
+    public List<Sprite> onScreenEnemies = new ArrayList<>(); //
+
+
 
 
     public Board() {
@@ -45,11 +51,11 @@ public class Board extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) { //is called with repaint() in ScheduleTask
         super.paintComponent(g);
         g.drawImage(levelBackground, 0, 0, null);
         drawMario(g);
-        System.out.println(mario.getX());
+        //System.out.println(mario.getX());
     }
     private void drawMario(Graphics g) {
 
@@ -58,7 +64,7 @@ public class Board extends JPanel {
 
         g2d.drawImage(mario.getImage(), mario.getX(),
                 mario.getY(), this);
-        System.out.println("drawMario");
+        //System.out.println("drawMario");
     }
 
     private class ScheduleTask extends TimerTask {
